@@ -1,7 +1,7 @@
 * {
   padding: 0px;
   margin: 0px;
-  border: 1px red solid;
+  /* border: 1px red solid; */
   box-sizing: border-box;
   font-family: "Arial", serif;
 }
@@ -28,7 +28,7 @@ main {
   width: 100%;
   height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: flex-start;
 }
 
@@ -36,11 +36,22 @@ main {
 .section-left {
   width: 20%;
   height: 100vh;
+  color: #fff;
+  background-color: #000;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.match-counter {
+  font-size: 5em;
 }
 
 .section-right {
   width: 79%;
   height: 100vh;
+  background-color: lightgrey;
 }
 
 .congrats-page {
