@@ -34,6 +34,7 @@ main {
   justify-content: flex-start;
 }
 /* global styling -end- */
+
 /* section left -begin- */
 .section-left {
   width: 20%;
@@ -49,7 +50,20 @@ main {
 .match-counter {
   font-size: 5em;
 }
+
+.card-match-box {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.matched-cards {
+  height:70px;
+  width:70px;
+  margin: 0px 3px 0px 3px;
+  border: 3px white solid;
+}
 /* section left -end- */
+
 /* section right -begin- */
 .section-right {
   display: grid;
@@ -74,6 +88,11 @@ main {
   width: 150px;
   background-color: white;
   margin: 2em 0em 3em 4em;
+}
+
+.cards img {
+  height:150px;
+  width:150px;
 }
 /* section right -end- */
 
