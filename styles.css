@@ -1,9 +1,23 @@
+/* start of CSS styling */
+/* global styling -begin- */
 * {
   padding: 0px;
   margin: 0px;
-  /* border: 1px red solid; */
   box-sizing: border-box;
   font-family: "Arial", serif;
+}
+
+main {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+body {
+  height: 100vh;
+  width:100%;
 }
 
 h1 {
@@ -16,26 +30,18 @@ p {
 
 header {
   width: 100%;
-  height: 6em;
+  height: 6vh;
   text-align: center;
 }
 
 header h1 {
-  margin-top: 1em;
+  margin-top: .5em;
 }
-
-main {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-}
-
-
+/* global styling -end- */
+/* section left -begin- */
 .section-left {
   width: 20%;
-  height: 100vh;
+  height: 100%;
   color: #fff;
   background-color: #000;
   text-align: center;
@@ -48,12 +54,51 @@ main {
   font-size: 5em;
 }
 
+.card-match-box {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.matched-cards {
+  height:80px;
+  width:80px;
+  margin: 0px 3px 0px 3px;
+  border: 3px white solid;
+}
+/* section left -end- */
+/* section right -begin- */
 .section-right {
-  width: 79%;
-  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-gap: 1em;
+  width: 80%;
+  height: 100%;
   background-color: lightgrey;
 }
 
+.section-right > div:nth-child(even) {
+  transform: rotate(-20deg) translate(5px);
+}
+
+.section-right > div:nth-child(odd) {
+  transform: rotate(10deg) translate(30px);
+}
+
+.cards {
+  height: 150px;
+  width: 150px;
+  background-color: white;
+  margin: 2em 0em 3em 4em;
+}
+
+.cards img {
+  height:100%;
+  width:100%;
+}
+/* section right -end- */
+/* congrats page -begin- */
 .congrats-page {
   display: flex;
   display: none;
@@ -64,14 +109,17 @@ main {
   text-align: center;
   justify-content: space-evenly;
 }
+
 .congrats-page h1 {
   font-size: 5em;
   color: white;
 }
+
 .congrats-page p {
   font-size: 2em;
   color: white;
 }
+
 .new-game-btn {
   color: white;
   background-color: black;
@@ -79,3 +127,5 @@ main {
   height: 3em;
   width: 11em;
 }
+/* congrats page -end- */
+/* end of CSS styling */
