@@ -1,11 +1,23 @@
 /* start of CSS styling */
-
 /* global styling -begin- */
 * {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
   font-family: "Arial", serif;
+}
+
+main {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+body {
+  height: 100vh;
+  width:100%;
 }
 
 h1 {
@@ -18,28 +30,18 @@ p {
 
 header {
   width: 100%;
-  height: 10%;
-  margin-bottom: 1em;
+  height: 6vh;
   text-align: center;
 }
 
 header h1 {
-  margin-top: 1em;
-}
-
-main {
-  width: 100%;
-  height: 90%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  margin-top: .5em;
 }
 /* global styling -end- */
-
 /* section left -begin- */
 .section-left {
   width: 20%;
-  height: 100vh;
+  height: 100%;
   color: #fff;
   background-color: #000;
   text-align: center;
@@ -57,6 +59,7 @@ main {
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
+
 .matched-cards {
   height:80px;
   width:80px;
@@ -64,7 +67,6 @@ main {
   border: 3px white solid;
 }
 /* section left -end- */
-
 /* section right -begin- */
 .section-right {
   display: grid;
@@ -72,16 +74,16 @@ main {
   grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-gap: 1em;
   width: 80%;
-  height: 100vh;
+  height: 100%;
   background-color: lightgrey;
 }
 
 .section-right > div:nth-child(even) {
-  transform: rotate(-20deg);
+  transform: rotate(-20deg) translate(5px);
 }
 
 .section-right > div:nth-child(odd) {
-  transform: rotate(10deg);
+  transform: rotate(10deg) translate(30px);
 }
 
 .cards {
@@ -92,12 +94,11 @@ main {
 }
 
 .cards img {
-  height:150px;
-  width:150px;
+  height:100%;
+  width:100%;
 }
 /* section right -end- */
-
-/* conrats page -begin- */
+/* congrats page -begin- */
 .congrats-page {
   display: flex;
   display: none;
@@ -127,5 +128,4 @@ main {
   width: 11em;
 }
 /* congrats page -end- */
-
 /* end of CSS styling */
