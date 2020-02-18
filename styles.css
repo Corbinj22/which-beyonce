@@ -1,7 +1,9 @@
+/* start of CSS styling */
+
+/* global styling -begin- */
 * {
   padding: 0px;
   margin: 0px;
-  /* border: 1px red solid; */
   box-sizing: border-box;
   font-family: "Arial", serif;
 }
@@ -31,8 +33,8 @@ main {
   flex-direction: row;
   justify-content: flex-start;
 }
-
-
+/* global styling -end- */
+/* section left -begin- */
 .section-left {
   width: 20%;
   height: 100vh;
@@ -47,13 +49,35 @@ main {
 .match-counter {
   font-size: 5em;
 }
-
+/* section left -end- */
+/* section right -begin- */
 .section-right {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-gap: 1em;
   width: 79%;
   height: 100vh;
   background-color: lightgrey;
 }
 
+.section-right > div:nth-child(even) {
+  transform: rotate(-20deg);
+}
+
+.section-right > div:nth-child(odd) {
+  transform: rotate(10deg);
+}
+
+.cards {
+  height: 150px;
+  width: 150px;
+  background-color: white;
+  margin: 2em 0em 3em 4em;
+}
+/* section right -end- */
+
+/* conrats page -begin- */
 .congrats-page {
   display: flex;
   display: none;
@@ -64,14 +88,17 @@ main {
   text-align: center;
   justify-content: space-evenly;
 }
+
 .congrats-page h1 {
   font-size: 5em;
   color: white;
 }
+
 .congrats-page p {
   font-size: 2em;
   color: white;
 }
+
 .new-game-btn {
   color: white;
   background-color: black;
@@ -79,3 +106,6 @@ main {
   height: 3em;
   width: 11em;
 }
+/* congrats page -end- */
+
+/* end of CSS styling */
