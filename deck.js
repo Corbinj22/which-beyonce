@@ -7,12 +7,16 @@ class Deck {
         this.matchedCards = [];
         this.selectedCards = [];
     }
+
     shuffle() {
 
     }
 
     addCard(card) {
       this.cards.push(card)
+    }
+    isSelected(card) {
+      this.selectedCards.push(card)
     }
 
 
