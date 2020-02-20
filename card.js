@@ -7,8 +7,8 @@ class Card {
     this.selectedImg = img;
   }
 
-  match(a, b) {
-    if(a === b) {
+  match(cardA, cardB) {
+    if(cardA === cardB) {
       this.matched = true;
     }
   }
