@@ -1,5 +1,6 @@
 class Card {
-    constructor(img) {
+    constructor(id, img) {
+        this.id = id;
         this.matched = false;
         this.selected = false;
         this.defaultImg = 'assets/B img.jpg'
