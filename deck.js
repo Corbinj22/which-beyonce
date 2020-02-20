@@ -8,7 +8,7 @@ class Deck {
         this.selectedCards = [];
     }
     shuffle() {
-
+      
     }
 
     addCard(card) {
