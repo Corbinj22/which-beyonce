@@ -29,5 +29,4 @@ function selectCard(event) {
     var cardAtHand = deck.cards.find(card => (card.id === parseInt(cardId)));
     deck.isSelected(cardAtHand)
   };
-  console.log(deck.selectedCards);
 };
