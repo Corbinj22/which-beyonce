@@ -8,6 +8,7 @@ var card7 = new Card(7, 'assets/bey4.jpg');
 var card8 = new Card(8, 'assets/bey4.jpg');
 var card9 = new Card(9, 'assets/bey5.jpg');
 var card10 = new Card(10, 'assets/bey5.jpg');
+var wholeDeck = [card1, card2, card3, card4, card5, card6, card7, card8, card9, card10]
 var deck = new Deck();
 
 var sectionRight = document.querySelector('.section-right')
@@ -16,11 +17,12 @@ window.addEventListener('load', displayCards)
 sectionRight.addEventListener('click', selectCard);
 
 function displayCards() {
-  deck.cards.forEach(function(card) {
-    sectionRight.insertAdjacentHTML('afterbegin', `<div class="cards">
-      <img id="${card.id}" src="assets/B img.jpg" alt="">
+  deck.populateDeck(wholeDeck);
+  wholeDeck.forEach(function(card) {
+    sectionRight.insertAdjacentHTML('afterbegin', `<div class="card${card.id} cards">
+    <img id="${card.id}" src="assets/B img.jpg" alt="">
     </div>`)
-  })
+  });
 }
 
 function selectCard(event) {
@@ -29,5 +31,4 @@ function selectCard(event) {
     var cardAtHand = deck.cards.find(card => (card.id === parseInt(cardId)));
     deck.isSelected(cardAtHand)
   };
-  console.log(deck.selectedCards);
 };
