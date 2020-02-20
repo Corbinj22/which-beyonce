@@ -11,6 +11,7 @@ var card10 = new Card('assets/bey5.jpg');
 var deck = new Deck();
 var sectionRight = document.querySelector('.section-right')
 
+sectionRight.addEventListener('click', test)
 window.addEventListener('load', displayCards)
 
 function displayCards() {
@@ -26,6 +27,12 @@ function displayCards() {
         </div>
       </div>
     </div>`)
-
   })
 }
+
+// function test(event) {
+//   if(event.target.closest('.cards')) {
+//     console.log(1);
+//     event.target.classList.add('.flip-container:hover .flipper, .flip-container.hover .flipper')
+//   }
+// }
