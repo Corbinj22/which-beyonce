@@ -27,7 +27,7 @@ class Deck {
     } else if (this.selectedCards.includes(card)) {
       card.selected = false;
       var repeatCard = this.selectedCards.indexOf(card);
-      this.selectedCards.slice(repeatCard);
+      this.selectedCards.splice(repeatCard, 1);
     }
   }
 }
