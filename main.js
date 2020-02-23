@@ -10,7 +10,6 @@ var card9 = new Card(9, 'assets/bey5.jpg');
 var card10 = new Card(10, 'assets/bey5.jpg');
 var wholeDeck = [card1, card2, card3, card4, card5, card6, card7, card8, card9, card10]
 var deck = new Deck();
-var clickCounter = 0;
 
 var sectionRight = document.querySelector('.section-right')
 
@@ -51,7 +50,8 @@ function flipCard(event) {
     imgSrc = event.target.src
   }
 
-  if (clickCounter % 2 === 1) {
+  if (event.target.classList.contains('selected')) {
+    event.target.classList.remove('selected')
     deck.cards.forEach(function(card) {
       if(card.id !== parseInt(imgId)) {
         imgSrc = card.defaultImg;
@@ -59,7 +59,7 @@ function flipCard(event) {
       }
     })
   } else if (event.target.id === imgId) {
-    clickCounter++;
+    event.target.classList.add('selected')
     deck.cards.forEach(function(card) {
       if (card.id === parseInt(imgId)) {
         imgSrc = card.selectedImg;
