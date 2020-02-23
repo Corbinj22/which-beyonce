@@ -16,8 +16,12 @@ class Deck {
     this.cards = wholeDeck;
   }
 
-  moveToMatched() {
-
+  moveToMatched(event) {
+    if (this.selectedCards[0].selectedImg === this.selectedCards[1].selectedImg) {
+      this.selectedCards[0].matched = true
+      this.selectedCards[1].matched = true
+      this.matchedCards.push(this.selectedCards)
+    }
   }
 
   isSelected(card) {

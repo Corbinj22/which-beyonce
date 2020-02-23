@@ -8,7 +8,7 @@ class Card {
   }
 
   match(cardA, cardB) {
-    if(cardA === cardB) {
+    if (cardA === cardB) {
       this.matched = true;
     }
   }
