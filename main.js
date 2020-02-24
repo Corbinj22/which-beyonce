@@ -22,7 +22,7 @@ window.addEventListener('load', displayCards)
 sectionRight.addEventListener('click', function() {
   selectCard(event);
   flipCard(event);
-  deck.moveToMatched(event);
+  deck.moveToMatched();
 });
 
 function displayCards() {
