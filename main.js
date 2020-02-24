@@ -61,7 +61,7 @@ function flipCard(event) {
         event.target.src = imgSrc;
       }
     })
-  } else if (event.target.id === imgId) {
+  } else if (event.target.id === imgId && deck.selectedCards.length < 3) {
     event.target.classList.add('selected')
     deck.cards.forEach(function(card) {
       if (card.id === parseInt(imgId)) {
@@ -79,4 +79,3 @@ function updateCounter() {
   })
   matchCounter.innerHTML = counter;
 }
-
