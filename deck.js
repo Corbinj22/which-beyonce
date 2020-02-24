@@ -21,21 +21,21 @@ class Deck {
     if (this.selectedCards[0].selectedImg === this.selectedCards[1].selectedImg) {
       this.selectedCards[0].matched = true
       this.selectedCards[1].matched = true
-      console.log(this.selectedCards);
       this.matchedCards.push(this.selectedCards)
-      console.log(this.matchedCards.length);
+      this.selectedCards = [];
       this.hideMatched(this.matchedCards)
     }
   }
 
-  hideMatched(cards) {
-    console.log(cards.length)
-    for(var i = 0; i < cards.length; i++) {
-      console.log(cards)
-      var id = cards[i].id;
-      console.log(id);
-      document.getElementById(`#${id}`).style.visibility = 'hidden';
-    console.log(document.getElementById(`#${id}`))
+  hideMatched(matchedCards) {
+    console.log(matchedCards)
+    for(var i = 0; i < matchedCards.length; i++) {
+      var cardId = matchedCards[i];
+      var idOne = cardId[0].id;
+      var idTwo = cardId[1].id;  
+      // var dissapear = [idOne, idTwo]
+      sectionRight.querySelector(`.card${idOne}`).style.visibility = 'hidden';
+      sectionRight.querySelector(`.card${idTwo}`).style.visibility = 'hidden';
     }
   }
 
@@ -47,6 +47,6 @@ class Deck {
       card.selected = false;
       var repeatCard = this.selectedCards.indexOf(card);
       this.selectedCards.splice(repeatCard, 1);
-    }
+    } 
   }
 }
