@@ -17,7 +17,6 @@ class Deck {
   }
 
   moveToMatched() {
-    console.log(this.selectedCards)
     if (this.selectedCards[0].selectedImg === this.selectedCards[1].selectedImg) {
       this.selectedCards[0].matched = true
       this.selectedCards[1].matched = true
@@ -28,14 +27,13 @@ class Deck {
   }
 
   hideMatched(matchedCards) {
-    console.log(matchedCards)
     for(var i = 0; i < matchedCards.length; i++) {
       var cardId = matchedCards[i];
       var idOne = cardId[0].id;
       var idTwo = cardId[1].id;  
-      // var dissapear = [idOne, idTwo]
       sectionRight.querySelector(`.card${idOne}`).style.visibility = 'hidden';
       sectionRight.querySelector(`.card${idTwo}`).style.visibility = 'hidden';
+      updateCounter();
     }
   }
 
