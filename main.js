@@ -11,7 +11,9 @@ var card10 = new Card(10, 'assets/bey5.jpg');
 var wholeDeck = [card1, card2, card3, card4, card5, card6, card7, card8, card9, card10]
 var deck = new Deck();
 
-var sectionRight = document.querySelector('.section-right')
+var sectionRight = document.querySelector('.section-right');
+var sectionLeft = document.querySelector('.section-left');
+var matchCounter = document.querySelector(".match-counter");
 
 // window.addEventListener('click', test)
 // function test(event) {
@@ -69,3 +71,12 @@ function flipCard(event) {
     })
   }
 }
+
+function updateCounter() {
+  var counter = 0;
+  deck.matchedCards.forEach(card => {
+    counter++
+  })
+  matchCounter.innerHTML = counter;
+}
+
