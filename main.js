@@ -116,4 +116,6 @@ function reloadGame() {
   congratsPage.style.display = "none";
   mainPage.style.display = "flex";
   displayCards();
+  deck.matchedCards = [];
+  matchCounter.innerHTML = "0";
 }
