@@ -102,8 +102,9 @@ header h1 {
 /* section right -end- */
 /* congrats page -begin- */
 .congrats-page {
-  display: flex;
+  /* display: flex; */
   display: none;
+  /* visibility: hidden; */
   flex-direction: column;
   width: 100%;
   height: 80vh;
