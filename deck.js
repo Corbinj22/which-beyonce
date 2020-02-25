@@ -23,6 +23,7 @@ class Deck {
       this.matchedCards.push(this.selectedCards)
       this.selectedCards = [];
       this.hideMatched(this.matchedCards)
+      displayCongratsPage()
     }
   }
 
@@ -31,6 +32,7 @@ class Deck {
       var cardId = matchedCards[i];
       var idOne = cardId[0].id;
       var idTwo = cardId[1].id;  
+      console.log()
       sectionRight.querySelector(`.card${idOne}`).style.visibility = 'hidden';
       sectionRight.querySelector(`.card${idTwo}`).style.visibility = 'hidden';
       updateCounter();

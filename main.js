@@ -11,6 +11,8 @@ var card10 = new Card(10, 'assets/bey5.jpg');
 var wholeDeck = [card1, card2, card3, card4, card5, card6, card7, card8, card9, card10]
 var deck = new Deck();
 
+var mainPage = document.querySelector('.main-page');
+var congratsPage = document.querySelector('.congrats-page');
 var sectionRight = document.querySelector('.section-right');
 var sectionLeft = document.querySelector('.section-left');
 var matchCounter = document.querySelector(".match-counter");
@@ -78,4 +80,12 @@ function updateCounter() {
     counter++
   })
   matchCounter.innerHTML = counter;
+}
+
+
+function displayCongratsPage() {
+  if(deck.matchedCards.length === 5) {
+    mainPage.style.display = "none";
+    congratsPage.style.display = "flex";
+  }
 }
