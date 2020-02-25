@@ -14,6 +14,7 @@ var deck = new Deck();
 var sectionRight = document.querySelector('.section-right');
 var sectionLeft = document.querySelector('.section-left');
 var matchCounter = document.querySelector(".match-counter");
+var congratsPage = document.querySelector('.congrats-page');
 
 // window.addEventListener('click', test)
 // function test(event) {
@@ -53,6 +54,8 @@ function flipCard(event) {
     imgSrc = event.target.src
   }
 
+  console.log('SELECTED', deck.selectedCards.length);
+
   if (event.target.classList.contains('selected')) {
     event.target.classList.remove('selected')
     deck.cards.forEach(function(card) {
@@ -78,4 +81,13 @@ function updateCounter() {
     counter++
   })
   matchCounter.innerHTML = counter;
+  if (counter === 5) {
+    gameWin();
+  }
+}
+
+function gameWin() {
+  sectionRight.style.display = 'none'
+  sectionLeft.style.display = 'none'
+  congratsPage.classList.remove('display-none')
 }
