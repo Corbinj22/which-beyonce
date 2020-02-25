@@ -30,7 +30,7 @@ class Deck {
     for(var i = 0; i < matchedCards.length; i++) {
       var cardId = matchedCards[i];
       var idOne = cardId[0].id;
-      var idTwo = cardId[1].id;  
+      var idTwo = cardId[1].id;
       sectionRight.querySelector(`.card${idOne}`).style.visibility = 'hidden';
       sectionRight.querySelector(`.card${idTwo}`).style.visibility = 'hidden';
       updateCounter();
@@ -45,6 +45,6 @@ class Deck {
       card.selected = false;
       var repeatCard = this.selectedCards.indexOf(card);
       this.selectedCards.splice(repeatCard, 1);
-    } 
+    }
   }
 }
