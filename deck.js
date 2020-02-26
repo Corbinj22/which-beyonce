@@ -3,9 +3,19 @@ class Deck {
     this.cards = [];
     this.matchedCards = [];
     this.selectedCards = [];
+    this.shuffledCards = [];
   }
 
   shuffle() {
+
+    var min = 0
+    var max = 9
+    for (var i = 0; i < 10; i++) {
+      // var randomNum = Math.floor(Math.random() + (max - min) + min)
+      var randomNum = Math.floor(Math.random() * (i + 1))
+      var card = this.shuffledCards.splice(randomNum, 1)
+      this.shuffledCards.push.apply(this.shuffledCards, card)
+    }
   }
 
   checkSelectedCards() {
@@ -13,7 +23,7 @@ class Deck {
   }
 
   populateDeck(wholeDeck) {
-    this.cards = wholeDeck;
+    this.shuffledCards = wholeDeck;
   }
 
   moveToMatched() {
@@ -31,7 +41,7 @@ class Deck {
     for(var i = 0; i < matchedCards.length; i++) {
       var cardId = matchedCards[i];
       var idOne = cardId[0].id;
-      var idTwo = cardId[1].id;  
+      var idTwo = cardId[1].id;
       console.log()
       sectionRight.querySelector(`.card${idOne}`).style.visibility = 'hidden';
       sectionRight.querySelector(`.card${idTwo}`).style.visibility = 'hidden';
@@ -47,6 +57,6 @@ class Deck {
       card.selected = false;
       var repeatCard = this.selectedCards.indexOf(card);
       this.selectedCards.splice(repeatCard, 1);
-    } 
+    }
   }
 }
