@@ -10,12 +10,15 @@ var card9 = new Card(9, 'assets/bey5.jpg');
 var card10 = new Card(10, 'assets/bey5.jpg');
 var wholeDeck = [card1, card2, card3, card4, card5, card6, card7, card8, card9, card10]
 var deck = new Deck();
-
+var newGameButton = document.querySelector('.new-game-btn');
 var mainPage = document.querySelector('.main-page');
 var congratsPage = document.querySelector('.congrats-page');
 var sectionRight = document.querySelector('.section-right');
 var sectionLeft = document.querySelector('.section-left');
 var matchCounter = document.querySelector(".match-counter");
+var minutesInput = document.querySelector('.minutes');
+var secondsInput = document.querySelector('.seconds');
+
 
 // window.addEventListener('click', test)
 // function test(event) {
@@ -32,6 +35,10 @@ sectionRight.addEventListener('click', function() {
   deck.moveToMatched();
 });
 
+newGameButton.addEventListener('click', reloadGame);
+
+
+
 function displayCards() {
 
   deck.populateDeck(wholeDeck);
@@ -42,6 +49,11 @@ function displayCards() {
     </div>`)
   });
 }
+
+
+var timer = setInterval(countUp, 1000, time);
+var time = 0;
+
 
 function selectCard(event) {
   if (event.target.closest('.cards')) {
@@ -87,6 +99,15 @@ function updateCounter() {
   matchCounter.innerHTML = counter;
 }
 
+function countUp(a) {
+  console.log(time++);
+  // minutesInput = parseInt((time / 60))
+  secondsInput.innerHTML = `It took ${(time % 60)} seconds to match all the cards`;
+  if (deck.matchedCards.length === 5) {
+    console.log(deck.matchedCards.length)
+    clearInterval(timer);
+  }
+}
 
 function displayCongratsPage() {
   if(deck.matchedCards.length === 5) {
@@ -95,6 +116,11 @@ function displayCongratsPage() {
   }
 }
 
-// function cardArray() {
-//   wholeDeck = deck.cards;
-// }
+
+function reloadGame() {
+  congratsPage.style.display = "none";
+  mainPage.style.display = "flex";
+  displayCards();
+  deck.matchedCards = [];
+  matchCounter.innerHTML = "0";
+}
