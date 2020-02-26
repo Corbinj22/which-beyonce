@@ -3,8 +3,8 @@ var card2 = new Card(2, 'assets/bey1.jpg');
 var card3 = new Card(3, 'assets/bey2.jpg');
 var card4 = new Card(4, 'assets/bey2.jpg');
 var card5 = new Card(5, 'assets/bey3.jpeg');
-var card6 = new Card(6, 'assets/bey3.jpeg');
 var card7 = new Card(7, 'assets/bey4.jpg');
+var card6 = new Card(6, 'assets/bey3.jpeg');
 var card8 = new Card(8, 'assets/bey4.jpg');
 var card9 = new Card(9, 'assets/bey5.jpg');
 var card10 = new Card(10, 'assets/bey5.jpg');
@@ -22,7 +22,10 @@ var matchCounter = document.querySelector(".match-counter");
 //   console.log(event.target);
 // }
 
-window.addEventListener('load', displayCards)
+window.addEventListener('load', function() {
+  displayCards();
+  // cardArray();
+})
 sectionRight.addEventListener('click', function() {
   selectCard(event);
   flipCard(event);
@@ -30,7 +33,9 @@ sectionRight.addEventListener('click', function() {
 });
 
 function displayCards() {
+
   deck.populateDeck(wholeDeck);
+  deck.shuffle();
   wholeDeck.forEach(function(card) {
     sectionRight.insertAdjacentHTML('afterbegin', `<div class="card${card.id} cards">
     <img id="${card.id}" src="assets/B img.jpg" alt="">
@@ -41,7 +46,7 @@ function displayCards() {
 function selectCard(event) {
   if (event.target.closest('.cards')) {
     var cardId = event.target.id;
-    var cardAtHand = deck.cards.find(card => (card.id === parseInt(cardId)));
+    var cardAtHand = deck.shuffledCards.find(card => (card.id === parseInt(cardId)));
     deck.isSelected(cardAtHand)
   };
 };
@@ -57,7 +62,7 @@ function flipCard(event) {
 
   if (event.target.classList.contains('selected')) {
     event.target.classList.remove('selected')
-    deck.cards.forEach(function(card) {
+    deck.shuffledCards.forEach(function(card) {
       if(card.id !== parseInt(imgId)) {
         imgSrc = card.defaultImg;
         event.target.src = imgSrc;
@@ -65,7 +70,7 @@ function flipCard(event) {
     })
   } else if (event.target.id === imgId && deck.selectedCards.length < 3) {
     event.target.classList.add('selected')
-    deck.cards.forEach(function(card) {
+    deck.shuffledCards.forEach(function(card) {
       if (card.id === parseInt(imgId)) {
         imgSrc = card.selectedImg;
         event.target.src = imgSrc;
@@ -89,3 +94,7 @@ function displayCongratsPage() {
     congratsPage.style.display = "flex";
   }
 }
+
+// function cardArray() {
+//   wholeDeck = deck.cards;
+// }
