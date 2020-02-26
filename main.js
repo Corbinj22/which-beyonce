@@ -40,10 +40,9 @@ newGameButton.addEventListener('click', reloadGame);
 
 
 function displayCards() {
-
   deck.populateDeck(wholeDeck);
   deck.shuffle();
-  wholeDeck.forEach(function(card) {
+  deck.shuffledCards.forEach(function(card) {
     sectionRight.insertAdjacentHTML('afterbegin', `<div class="card${card.id} cards">
     <img id="${card.id}" src="assets/B img.jpg" alt="">
     </div>`)
