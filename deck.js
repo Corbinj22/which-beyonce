@@ -7,14 +7,13 @@ class Deck {
   }
 
   shuffle() {
-
     var min = 0
     var max = 9
     for (var i = 0; i < 10; i++) {
-      // var randomNum = Math.floor(Math.random() + (max - min) + min)
-      var randomNum = Math.floor(Math.random() * (i + 1))
-      var card = this.shuffledCards.splice(randomNum, 1)
+      var randomNum = Math.floor(Math.random() * (max - min) + min)
+      var card = this.cards.splice(randomNum, 1)
       this.shuffledCards.push.apply(this.shuffledCards, card)
+      max--;
     }
   }
 
@@ -23,7 +22,7 @@ class Deck {
   }
 
   populateDeck(wholeDeck) {
-    this.shuffledCards = wholeDeck;
+    this.cards = wholeDeck;
   }
 
   moveToMatched() {
