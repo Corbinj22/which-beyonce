@@ -61,7 +61,7 @@ function flipCard(event) {
   var imgId
   var imgSrc
 
-  if(event.target.closest('.cards')) {
+  if (event.target.closest('.cards')) {
     imgId = event.target.id
     imgSrc = event.target.src
   }
@@ -69,7 +69,7 @@ function flipCard(event) {
   if (event.target.classList.contains('selected')) {
     event.target.classList.remove('selected')
     deck.shuffledCards.forEach(function(card) {
-      if(card.id !== parseInt(imgId)) {
+      if (card.id !== parseInt(imgId)) {
         imgSrc = card.defaultImg;
         event.target.src = imgSrc;
       }
@@ -94,7 +94,7 @@ function updateCounter() {
   matchCounter.innerHTML = counter;
 }
 
-// displays time on congrats page 
+// displays time on congrats page
 function countUp(a) {
   console.log(time++);
   secondsInput.innerHTML = `It took ${parseInt(time/60)} minutes & ${(time % 60)} seconds to match all the cards`;
@@ -105,7 +105,7 @@ function countUp(a) {
 
 // if 5 pairs are matched display congrats page
 function displayCongratsPage() {
-  if(deck.matchedCards.length === 5) {
+  if (deck.matchedCards.length === 5) {
     mainPage.style.display = "none";
     congratsPage.style.display = "flex";
   }
@@ -124,13 +124,13 @@ function reloadGame() {
 // stores times in array for LS
 function bestTime() {
   var topTimes = getTime()
-  if(time > 0 ) {
+  if (time > 0 ) {
   topTimes.push(time);
   topTimes.sort(function(a, b) {
     return a - b;
   })
 };
-  if(topTimes.length > 3) {
+  if (topTimes.length > 3) {
     topTimes.pop()
   }
   var top3TimesString = JSON.stringify(topTimes);
@@ -141,7 +141,7 @@ function bestTime() {
 // grabs times from LS
 function getTime() {
   var getTimeLS = localStorage.getItem('totalGameTime');
-  if(getTimeLS === null) {
+  if (getTimeLS === null) {
     getTimeLS = "[]";
   }
   var timeParsed = JSON.parse(getTimeLS);

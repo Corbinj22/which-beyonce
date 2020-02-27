@@ -37,7 +37,7 @@ class Deck {
   }
 
   hideMatched(matchedCards) {
-    for(var i = 0; i < matchedCards.length; i++) {
+    for (var i = 0; i < matchedCards.length; i++) {
       var cardId = matchedCards[i];
       var idOne = cardId[0].id;
       var idTwo = cardId[1].id;
