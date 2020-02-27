@@ -1,3 +1,4 @@
+// Global Variables
 var card1 = new Card(1, 'assets/bey1.jpg');
 var card2 = new Card(2, 'assets/bey1.jpg');
 var card3 = new Card(3, 'assets/bey2.jpg');
@@ -18,17 +19,15 @@ var sectionLeft = document.querySelector('.section-left');
 var matchCounter = document.querySelector(".match-counter");
 var minutesInput = document.querySelector('.minutes');
 var secondsInput = document.querySelector('.seconds');
+var timer = setInterval(countUp, 1000, time);
+var time = 0;
 
-
-// window.addEventListener('click', test)
-// function test(event) {
-//   console.log(event.target);
-// }
-
-window.addEventListener('load', function() {
-  displayCards();
-  // cardArray();
+// event listeners
+  window.addEventListener('load', function() {
+    displayCards();
+    showTime();
 })
+
 sectionRight.addEventListener('click', function() {
   selectCard(event);
   flipCard(event);
@@ -37,8 +36,7 @@ sectionRight.addEventListener('click', function() {
 
 newGameButton.addEventListener('click', reloadGame);
 
-
-
+// instantiate cards and shuffle
 function displayCards() {
   deck.populateDeck(wholeDeck);
   deck.shuffle();
@@ -49,11 +47,7 @@ function displayCards() {
   });
 }
 
-
-var timer = setInterval(countUp, 1000, time);
-var time = 0;
-
-
+// user clicks on card
 function selectCard(event) {
   if (event.target.closest('.cards')) {
     var cardId = event.target.id;
@@ -62,6 +56,7 @@ function selectCard(event) {
   };
 };
 
+// once clicked, card flips over
 function flipCard(event) {
   var imgId
   var imgSrc
@@ -90,6 +85,7 @@ function flipCard(event) {
   }
 }
 
+// Increase match counter with matched cards
 function updateCounter() {
   var counter = 0;
   deck.matchedCards.forEach(card => {
@@ -98,16 +94,16 @@ function updateCounter() {
   matchCounter.innerHTML = counter;
 }
 
+// displays time on congrats page 
 function countUp(a) {
   console.log(time++);
-  // minutesInput = parseInt((time / 60))
-  secondsInput.innerHTML = `It took ${(time % 60)} seconds to match all the cards`;
+  secondsInput.innerHTML = `It took ${parseInt(time/60)} minutes & ${(time % 60)} seconds to match all the cards`;
   if (deck.matchedCards.length === 5) {
-    console.log(deck.matchedCards.length)
     clearInterval(timer);
   }
 }
 
+// if 5 pairs are matched display congrats page
 function displayCongratsPage() {
   if(deck.matchedCards.length === 5) {
     mainPage.style.display = "none";
@@ -115,11 +111,49 @@ function displayCongratsPage() {
   }
 }
 
-
+// when user clicks on new game, main page displays
 function reloadGame() {
   congratsPage.style.display = "none";
   mainPage.style.display = "flex";
   displayCards();
   deck.matchedCards = [];
   matchCounter.innerHTML = "0";
+  showTime();
+}
+
+// stores times in array for LS
+function bestTime() {
+  var topTimes = getTime()
+  if(time > 0 ) {
+  topTimes.push(time);
+  topTimes.sort(function(a, b) {
+    return a - b;
+  })
+};
+  if(topTimes.length > 3) {
+    topTimes.pop()
+  }
+  var top3TimesString = JSON.stringify(topTimes);
+  localStorage.setItem('totalGameTime', top3TimesString)
+  return topTimes
+}
+
+// grabs times from LS
+function getTime() {
+  var getTimeLS = localStorage.getItem('totalGameTime');
+  if(getTimeLS === null) {
+    getTimeLS = "[]";
+  }
+  var timeParsed = JSON.parse(getTimeLS);
+  return timeParsed
+}
+
+// displays times on main page
+function showTime() {
+  var topTimes = bestTime();
+  var topTimesDiv = document.querySelector('.top-scores');
+   topTimesDiv.innerHTML = "";
+  for(var i = 0; i < topTimes.length; i++) {
+    topTimesDiv.innerHTML += `<p>${topTimes[i]} Seconds</p>`
+  };
 }
